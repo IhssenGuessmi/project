@@ -1,21 +1,34 @@
 const express=require('express')
-const User = require('../models/User')
+const { addUser,getAllUsers,deleteUser,updateUser,getOneUser}=require('../controllers/userController')
 const router=express.Router()
 
 //add new user
 //method post
 //req.body
-router.post('/adduser',async(req,res)=>{
-    const {name,email,adress,age,phoneNumber}=req.body
-    try {
-        const user=new User({
-            name,email,adress,age,phoneNumber
-        })
-        await user.save()
-        res.status(201).send({msg:'user created',user})
-    } catch (error) {
-        res.status(500).send('server error')
-    }
-})
+router.post('/addUser',addUser)
+
+
+//get all users
+// methode get
+router.get('/allUsers',getAllUsers)
+
+
+//remove user
+//methode delete
+//req.params
+router.delete('/deleteUser/:id',deleteUser)
+
+
+
+//update User
+//methode put
+//req.body
+//req.params
+router.put('/updateUser/:id',updateUser)
+
+// get one User
+//methode get
+//req.params
+router.get('/getOneUser/:id',getOneUser)
 
 module.exports=router
