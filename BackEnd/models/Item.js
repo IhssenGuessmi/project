@@ -3,7 +3,7 @@ const Schema=mongoose.Schema
 
 const itemsSchema= new Schema({
     itemName:{
-        type:String,required:true
+        type:String,required:true,unique:true
     },
     price:{
         type:Number,required:true
