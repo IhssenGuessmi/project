@@ -14,6 +14,11 @@ const usersSchema=new Schema({
     adress:{
         type:String,required:true
     },
+    role:{
+        type:String,
+        enum:['user','admin'],
+        default: 'user'
+    },
     age:Number,
     phoneNumber:Number
 
